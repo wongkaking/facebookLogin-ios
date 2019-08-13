@@ -1,5 +1,5 @@
 # facebookLogin-ios
-Swift
+开发语言：Swift
 >iOS接入Facebook第三方登录
 开发语言：Swift
  [官方文档](https://developers.facebook.com/docs/facebook-login/ios)
@@ -70,9 +70,11 @@ profilePictureView.profileID = access?.userID ?? ""
 ```
 
 [项目demo](https://github.com/wongkaking/facebookLogin-ios)
-因为这个demo只是用于了解Facebook登录，并没有上线，所以请大家将FacebookAppID等修改为自己项目的编号
+
+- 因为这个demo只是用于了解Facebook登录，并没有上线，所以请大家将FacebookAppID等修改为自己项目的编号
 
 参考
+
 [iOS集成facebook实现自动登录](https://www.jianshu.com/p/4186c54c13b1)
 
 尊重原创，转载请注明出处，谢谢！
