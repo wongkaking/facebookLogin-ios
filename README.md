@@ -4,16 +4,16 @@ Swift
 开发语言：Swift
  [官方文档](https://developers.facebook.com/docs/facebook-login/ios)
 
-#####第一步
+# 第一步
 - 按照官方文档指引，创建应用并接入Facebook SDK
 SDK接入可以选择`cocoapods`或者直接下载
 - [注册一个Facebook开发者账号]([https://developers.facebook.com/](https://developers.facebook.com/)
 )
 
-#####第二步
+# 第二步
 - 在Facebook注册和配置应用
 
-#####第三步
+# 第三步
 - 完成`info.plist`列表配置，`info.plist`作为源码打开，复制以下代码
 
 ```
@@ -27,7 +27,7 @@ SDK接入可以选择`cocoapods`或者直接下载
 <key>LSApplicationQueriesSchemes</key> <array> <string>fbapi</string> <string>fb-messenger-share-api</string> <string>fbauth2</string> <string>fbshareextension</string> </array>
 ```
 
-#####第四步
+# 第四步
 - 在AppDelegate中添加代码，启动时初始化 SDK，并在您执行登录或分享操作时，让 SDK 处理通过原生 Facebook 应用获得的结果。
 ```
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -41,7 +41,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
     }
 ```
 
-#####第五步
+# 第五步
 - 添加Facebook登录功能
 ```
 override func viewDidLoad() {
@@ -61,7 +61,7 @@ override func viewDidLoad() {
 ![](https://upload-images.jianshu.io/upload_images/13640702-e73070447348e5fe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - 如果你的按钮变成了logout，那就说明已经登录成功了
 
-#####进阶
+# 进阶
 - 单纯登录肯定是不够了，我这里会把用户的头像以及信息显示出来
 - 头像显示可以用Facebook封装好的控件`FBProfilePictureView`，将`FBProfilePictureView`的profileID设置为userID即可
 ```
@@ -69,12 +69,11 @@ let access = AccessToken.current
 profilePictureView.profileID = access?.userID ?? ""
 ```
 
-<hr>
 [项目demo](https://github.com/wongkaking/facebookLogin-ios)
 因为这个demo只是用于了解Facebook登录，并没有上线，所以请大家将FacebookAppID等修改为自己项目的编号
 
 参考
 [iOS集成facebook实现自动登录](https://www.jianshu.com/p/4186c54c13b1)
 
-<hr>尊重原创，转载请注明出处，谢谢！
+尊重原创，转载请注明出处，谢谢！
 未经授权禁止转载！
