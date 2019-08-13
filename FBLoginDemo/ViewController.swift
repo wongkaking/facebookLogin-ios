@@ -40,6 +40,11 @@ class ViewController: UIViewController {
         profilePictureView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         profilePictureView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profilePictureView.topAnchor.constraint(equalTo: loginBtn.bottomAnchor, constant: 20).isActive = true
+
+        userDatailsLabel.translatesAutoresizingMaskIntoConstraints = false
+        userDatailsLabel.topAnchor.constraint(equalTo: profilePictureView.bottomAnchor, constant: 20).isActive = true
+        userDatailsLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        userDatailsLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
     }
 
     func fetchData() {
@@ -48,11 +53,6 @@ class ViewController: UIViewController {
         let userid = profile.userID
         let name = profile.name
         userDatailsLabel.text = "\(userid)\n\(name)"
-
-        userDatailsLabel.translatesAutoresizingMaskIntoConstraints = false
-        userDatailsLabel.topAnchor.constraint(equalTo: profilePictureView.bottomAnchor, constant: 20).isActive = true
-        userDatailsLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        userDatailsLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
 
         let access = AccessToken.current
         profilePictureView.profileID = access?.userID ?? ""
