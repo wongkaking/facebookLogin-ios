@@ -48,14 +48,19 @@ class ViewController: UIViewController {
     }
 
     func fetchData() {
-        guard let profile = Profile.current else { return }
+        Settings.isAutoLogAppEventsEnabled = true
+        Settings.isAutoInitEnabled = true
+        Settings.isAdvertiserIDCollectionEnabled = false
 
-        let userid = profile.userID
-        let name = profile.name
-        userDatailsLabel.text = "\(userid)\n\(name)"
+        ApplicationDelegate.initializeSDK(nil)
 
-        let access = AccessToken.current
-        profilePictureView.profileID = access?.userID ?? ""
-        print(profilePictureView.profileID)
+        Profile.loadCurrentProfile { (currentProfile, error) in
+            guard let profile = currentProfile else { return }
+            let userid = profile.userID
+            let name = profile.name
+            self.profilePictureView.profileID = userid
+            self.userDatailsLabel.text = name
+        }
+
     }
 }
