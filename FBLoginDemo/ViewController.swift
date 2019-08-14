@@ -1,7 +1,7 @@
 import UIKit
 import FBSDKLoginKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, LoginButtonDelegate {
 
     lazy var loginBtn: FBLoginButton = {
         let loginBtn = FBLoginButton(type: .custom)
@@ -24,6 +24,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loginBtn.delegate = self
 
         setupUI()
         fetchData()
@@ -48,19 +50,25 @@ class ViewController: UIViewController {
     }
 
     func fetchData() {
-        Settings.isAutoLogAppEventsEnabled = true
-        Settings.isAutoInitEnabled = true
-        Settings.isAdvertiserIDCollectionEnabled = false
+        loadCurrentProfile()
+    }
 
-        ApplicationDelegate.initializeSDK(nil)
-
-        Profile.loadCurrentProfile { (currentProfile, error) in
-            guard let profile = currentProfile else { return }
-            let userid = profile.userID
-            let name = profile.name
+    private func loadCurrentProfile() {
+        Profile.loadCurrentProfile { (profile, error) in
+            guard let currentProfile = profile else { return }
+            let userid = currentProfile.userID
+            let name = currentProfile.name
             self.profilePictureView.profileID = userid
             self.userDatailsLabel.text = name
         }
+    }
 
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        loadCurrentProfile()
+    }
+
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        profilePictureView.profileID = ""
+        userDatailsLabel.text = ""
     }
 }
