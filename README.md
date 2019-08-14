@@ -1,7 +1,6 @@
-# facebookLogin-ios
+# FacebookLogin-ios
 - 开发语言：Swift
 - iOS接入Facebook第三方登录
-- 开发语言：Swift
 - [官方文档](https://developers.facebook.com/docs/facebook-login/ios)
 - https://www.jianshu.com/p/8da2ebb60eb5
 
